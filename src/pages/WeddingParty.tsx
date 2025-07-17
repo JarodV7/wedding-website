@@ -2,16 +2,16 @@ import React, { useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 
 const partyMembers = [
-  { name: 'Maid of Honor: Sarah Fedder', img: '/img/party1.jpg', bio: 'Need Text' },
-  { name: 'Best Man: Curtis Hodge', img: '/img/party2.jpg', bio: 'Need Text' },
-  { name: 'Bridesmaid: Rayn Barber', img: '/img/party3.jpg', bio: 'Need Text' },
-  { name: 'Groomsman: Jarod VanKirk', img: '/img/party4.jpg', bio: 'Need Text' },
-  { name: 'Bridesmaid: Makayla Shaffer', img: '/img/party5.jpg', bio: 'Need Text' },
-  { name: 'Groomsman: Kyle Haupt', img: '/img/party6.jpg', bio: 'Need Text' },
-  { name: 'Bridesmaid: Shaylene Laverio', img: '/img/party9.jpg', bio: 'Need Text' },
+  { name: 'Maid of Honor: Sarah Fedder', img: '/img/SarahFedder.jpeg', bio: 'Need Text' },
+  { name: 'Best Man: Curtis Hodge', img: '/img/CurtisHodge.jpeg', bio: 'Need Text' },
+  { name: 'Bridesmaid: Rayn Barber', img: '/img/party3.jpeg', bio: 'Need Text' },
+  { name: 'Groomsman: Jarod VanKirk', img: '/img/party4.jpeg', bio: 'Need Text' },
+  { name: 'Bridesmaid: Makayla Shaffer', img: '/img/party5.jpeg', bio: 'Need Text' },
+  { name: 'Groomsman: Kyle Haupt', img: '/img/KyleHaupt.jpeg', bio: 'Need Text' },
+  { name: 'Bridesmaid: Shaylene Laverio', img: '/img/ShayleneLaverio.jpeg', bio: 'Need Text' },
   { name: 'Groomsman: Ben Burns', img: '/img/party10.jpg', bio: 'Need Text' },
-  { name: 'Flower Girl: Sadee Knepper', img: '/img/party7.jpg', bio: 'Need Text' },
-  { name: 'Ring Security: William Knepper', img: '/img/party8.jpg', bio: 'Need Text' },
+  { name: 'Flower Girl: Sadee Knepper', img: '/img/SadeeKnepper.jpeg', bio: 'Need Text' },
+  { name: 'Ring Security: William Knepper', img: '/img/WilliamKnepper.jpeg', bio: 'Need Text' },
 ];
 
 const WeddingParty: React.FC = () => {
@@ -48,10 +48,10 @@ const WeddingParty: React.FC = () => {
       >
         {/* COVER PAGE */}
         <div className="bg-[#fff8f4] flex flex-col items-center justify-center p-4 relative">
-          <img src="/img/rose.svg" alt="decor" className="w-10 absolute top-2 left-2 opacity-20" />
+          <img src="/img/rose-illustration.png" alt="decor" className="w-10 absolute top-2 left-2 opacity-20" />
           <h1 className="text-2xl font-bold mb-2">Wedding Party</h1>
           <p className="text-sm text-center">Click the corners to flip through the party!</p>
-          <img src="/img/couple.svg" alt="decor" className="w-10 absolute bottom-2 right-2 opacity-20" />
+          <img src="/img/couple-silhouette.png" alt="decor" className="w-10 absolute bottom-2 right-2 opacity-20" />
         </div>
 
         {/* MEMBER PAGES */}

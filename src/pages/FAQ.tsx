@@ -52,7 +52,7 @@ export default function FAQ() {
             </Accordion.Trigger>
           </Accordion.Header>
           <Accordion.Content className="bg-white px-4 pt-2 pb-4 text-sm">
-            Drink when you want, but the ceremony starts at 3:00 PM. Please arrive at least 30 minutes early.
+            Drink when you want, but the ceremony starts at 2:30 PM. Please arrive at least 30 minutes early.
           </Accordion.Content>
         </Accordion.Item>
         <Accordion.Item value="q6">
@@ -72,7 +72,7 @@ export default function FAQ() {
             </Accordion.Trigger>
           </Accordion.Header>
           <Accordion.Content className="bg-white px-4 pt-2 pb-4 text-sm">
-            Free drinks what more do you need?
+            Bathrooms are handicap accessible, and for those who can't walk far we will transport them to and from the ceremony location of the venue.
           </Accordion.Content>
         </Accordion.Item>
       </Accordion.Root>
