@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply text-[#2f3b2f] font-serif;
+  background: linear-gradient(to bottom right, #dce7d6, #d7e3f4, #fdf4c8, #f7d6dc);
+  background-attachment: fixed;
+  background-size: cover;
+}
