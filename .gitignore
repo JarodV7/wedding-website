@@ -1,0 +1,18 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+.yarn/
+.pnpm/
+
+# Build output
+dist/
+build/
+.vercel/
+.netlify/
+
+# Mac & system files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
