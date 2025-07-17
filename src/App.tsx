@@ -25,7 +25,6 @@ function App() {
 
   return (
     <div className="relative bg-gradient-to-br from-[#dce7d6] via-[#fdf4c8] to-[#f7d6dc] min-h-screen font-serif text-[#2f3b2f]">
-      <Analytics />
       <img src="/img/rose.svg" alt="rose" className="absolute top-4 right-4 w-40 opacity-10 pointer-events-none" />
       <img src="/img/couple.svg" alt="couple" className="absolute bottom-4 left-4 w-40 opacity-10 pointer-events-none" />
       {isRSVPed && <Navbar />}
