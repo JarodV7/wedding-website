@@ -9,7 +9,7 @@ const RSVPPage: React.FC<RSVPPageProps> = ({ onSuccess }) => {
   const [error, setError] = useState('');
 
   const handleSubmit = () => {
-    if (code === 'JarodIsSickAsFuck') {
+    if (code === 'yes2026') {
       onSuccess();
     } else {
       setError('Invalid RSVP code. Try again.');
