@@ -2,69 +2,68 @@ import React, { useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 
 const partyMembers = [
-  { name: 'Maid of Honor', img: '/img/party1.jpg', bio: 'Best friend of the bride. Loves baking and yoga.' },
-  { name: 'Best Man', img: '/img/party2.jpg', bio: 'Brother of the groom. Enjoys hiking and gaming.' },
-  // Add more members if needed
+  { name: 'Maid of Honor: Sarah Fedder', img: '/img/party1.jpg', bio: 'Need Text' },
+  { name: 'Best Man: Curtis Hodge', img: '/img/party2.jpg', bio: 'Need Text' },
+  { name: 'Bridesmaid: Rayn Barber', img: '/img/party3.jpg', bio: 'Need Text' },
+  { name: 'Groomsman: Jarod VanKirk', img: '/img/party4.jpg', bio: 'Need Text' },
+  { name: 'Bridesmaid: Makayla Shaffer', img: '/img/party5.jpg', bio: 'Need Text' },
+  { name: 'Groomsman: Kyle Haupt', img: '/img/party6.jpg', bio: 'Need Text' },
+  { name: 'Bridesmaid: Shaylene Laverio', img: '/img/party9.jpg', bio: 'Need Text' },
+  { name: 'Groomsman: Ben Burns', img: '/img/party10.jpg', bio: 'Need Text' },
+  { name: 'Flower Girl: Sadee Knepper', img: '/img/party7.jpg', bio: 'Need Text' },
+  { name: 'Ring Security: William Knepper', img: '/img/party8.jpg', bio: 'Need Text' },
 ];
 
 const WeddingParty: React.FC = () => {
-  const bookRef = useRef<any>(null); // ✅ moved inside the component
-
-  const goNext = () => bookRef.current?.flipNext();
-  const goPrev = () => bookRef.current?.flipPrev();
+  const bookRef = useRef<any>(null);
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
 
   return (
-    <div className="flex flex-col items-center space-y-4">
-      {/* Optional page flip buttons */}
-      <div className="space-x-4">
-        <button onClick={goPrev} className="px-4 py-2 bg-pink-200 rounded shadow">Prev</button>
-        <button onClick={goNext} className="px-4 py-2 bg-pink-200 rounded shadow">Next</button>
-      </div>
-
+    <div className="flex justify-center px-4">
       <HTMLFlipBook
-        style={{}}
-        showCover={true}
         ref={bookRef}
-        width={300}
-        height={400}
+        width={isMobile ? 280 : 400}
+        height={isMobile ? 360 : 500}
         size="stretch"
-        minWidth={315}
-        maxWidth={1000}
-        minHeight={400}
-        maxHeight={1536}
+        minWidth={280}
+        maxWidth={600}
+        minHeight={360}
+        maxHeight={800}
         maxShadowOpacity={0.5}
-        mobileScrollSupport={true}
-        startPage={0}
+        mobileScrollSupport={false}
+        showCover={true}
         drawShadow={true}
-        flippingTime={1000}
+        flippingTime={800}
         usePortrait={true}
         startZIndex={0}
         autoSize={true}
-        clickEventForward={true}
+        clickEventForward={false}
         useMouseEvents={true}
-        swipeDistance={30}
+        swipeDistance={0}
         showPageCorners={true}
         disableFlipByClick={false}
+        startPage={0}
         className="shadow-2xl"
+        style={{}}
       >
-        {/* ✅ COVER PAGE */}
+        {/* COVER PAGE */}
         <div className="bg-[#fff8f4] flex flex-col items-center justify-center p-4 relative">
-          <img src="/img/rose.svg" alt="decor" className="w-12 absolute top-2 left-2 opacity-20" />
+          <img src="/img/rose.svg" alt="decor" className="w-10 absolute top-2 left-2 opacity-20" />
           <h1 className="text-2xl font-bold mb-2">Wedding Party</h1>
-          <p className="text-sm text-center">Swipe or use buttons to meet the party!</p>
-          <img src="/img/couple.svg" alt="decor" className="w-12 absolute bottom-2 right-2 opacity-20" />
+          <p className="text-sm text-center">Click the corners to flip through the party!</p>
+          <img src="/img/couple.svg" alt="decor" className="w-10 absolute bottom-2 right-2 opacity-20" />
         </div>
 
-        {/* ✅ PARTY PAGES */}
+        {/* MEMBER PAGES */}
         {partyMembers.map((member, i) => (
           <div key={i} className="bg-white p-4 flex flex-col items-center justify-center">
             <img
               src={member.img}
               alt={member.name}
-              className="w-40 h-40 object-cover rounded-full shadow-md mb-2"
+              className="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-full shadow-md mb-2"
             />
-            <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-            <p className="text-sm text-center px-4">{member.bio}</p>
+            <h3 className="text-lg sm:text-xl font-bold mb-1">{member.name}</h3>
+            <p className="text-sm text-center px-2 sm:px-4">{member.bio}</p>
           </div>
         ))}
       </HTMLFlipBook>
