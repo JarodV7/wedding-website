@@ -2,16 +2,17 @@ import React, { useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 
 const partyMembers = [
-  { name: 'Maid of Honor: Sarah Fedder', img: '/img/SarahFedder.jpeg', bio: 'Need Text' },
-  { name: 'Best Man: Curtis Hodge', img: '/img/CurtisHodge.jpeg', bio: 'Need Text' },
-  { name: 'Bridesmaid: Rayn Barber', img: '/img/party3.jpeg', bio: 'Need Text' },
-  { name: 'Groomsman: Jarod VanKirk', img: '/img/party4.jpeg', bio: 'Need Text' },
-  { name: 'Bridesmaid: Makayla Shaffer', img: '/img/party5.jpeg', bio: 'Need Text' },
-  { name: 'Groomsman: Kyle Haupt', img: '/img/KyleHaupt.jpeg', bio: 'Need Text' },
-  { name: 'Bridesmaid: Shaylene Laverio', img: '/img/ShayleneLaverio.jpeg', bio: 'Need Text' },
-  { name: 'Groomsman: Ben Burns', img: '/img/party10.jpg', bio: 'Need Text' },
-  { name: 'Flower Girl: Sadee Knepper', img: '/img/SadeeKnepper.jpeg', bio: 'Need Text' },
-  { name: 'Ring Security: William Knepper', img: '/img/WilliamKnepper.jpeg', bio: 'Need Text' },
+  { name: 'The Bride & Groom:', img: '/img/EliseAndCaige.jpeg', bio: 'Elise VanKirk & Caige Pursel' },
+  { name: 'Maid of Honor:', img: '/img/SarahFedder.jpeg', bio: 'Sarah Fedder' },
+  { name: 'Best Man:', img: '/img/CurtisHodge.jpeg', bio: 'Curtis Hodge' },
+  { name: 'Bridesmaid:', img: '/img/party3.jpeg', bio: 'Rayn Barber' },
+  { name: 'Groomsman:', img: '/img/party4.jpeg', bio: 'Jarod VanKirk' },
+  { name: 'Bridesmaid:', img: '/img/MakaylaShaffer.jpeg', bio: 'Makayla Shaffer' },
+  { name: 'Groomsman:', img: '/img/KyleHaupt.jpeg', bio: 'Kyle Haupt' },
+  { name: 'Bridesmaid:', img: '/img/ShayleneLaverio.jpeg', bio: 'Shaylene Laverio' },
+  { name: 'Groomsman:', img: '/img/BenBurns.jpg', bio: 'Ben Burns' },
+  { name: 'Flower Girl:', img: '/img/SadeeKnepper.jpeg', bio: 'Sadee Knepper' },
+  { name: 'Ring Security:', img: '/img/WilliamKnepper.jpeg', bio: 'William Knepper' },
 ];
 
 const WeddingParty: React.FC = () => {
@@ -46,25 +47,6 @@ const WeddingParty: React.FC = () => {
         className="react-pageflip shadow-2xl"
         style={{}}
       >
-<div className="bg-[#fff8f4] relative w-full h-full flex items-center justify-center p-6">
-  <div className="flex flex-row items-end justify-center gap-4 max-w-full h-full">
-    <img
-      src="/img/daisy.png"
-      alt="daisy"
-      className="h-[85%] max-h-[90%] w-auto object-contain"
-    />
-    <img
-      src="/img/violet.png"
-      alt="violet"
-      className="h-[85%] max-h-[90%] w-auto object-contain"
-    />
-  </div>
-</div>
-
-
-
-
-
 
 {/* RIGHT: Title & instructions */}
 <div className="bg-[#fff8f4] relative w-full h-full flex flex-col items-end justify-between p-6 overflow-hidden">
@@ -81,14 +63,20 @@ const WeddingParty: React.FC = () => {
     </p>
   </div>
 
-  {/* Bottom-centered large silhouette */}
-  <div className="w-full flex justify-center mt-4 z-10">
+  <div className="bg-[#fff8f4] relative w-full h-full flex items-center justify-center p-6">
+  <div className="flex flex-row items-end justify-center gap-4 max-w-full h-full">
     <img
-      src="/img/couple-silhouette.png"
-      alt="couple silhouette"
-      className="w-24 opacity-30"
+      src="/img/daisy.png"
+      alt="daisy"
+      className="h-[85%] max-h-[90%] w-auto object-contain"
+    />
+    <img
+      src="/img/violet.png"
+      alt="violet"
+      className="h-[85%] max-h-[90%] w-auto object-contain"
     />
   </div>
+</div>
 </div>
 
 
@@ -115,7 +103,7 @@ const WeddingParty: React.FC = () => {
       <img
         src="/img/tape-top-right.png"
         alt="tape"
-        className="absolute top-[10%] left-[calc(50%-195px)] w-12 rotate-[-90deg] opacity-80 z-20"
+        className="absolute top-[10%] left-[10px] sm:left-[calc(50%-195px)] w-12 rotate-[-90deg] opacity-80 z-20"
       />
       <img
         src="/img/tape-top-right.png"
