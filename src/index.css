@@ -3,8 +3,17 @@
 @tailwind utilities;
 
 body {
-  @apply text-[#2f3b2f] font-serif;
-  background: linear-gradient(to bottom right, #dce7d6, #d7e3f4, #fdf4c8, #f7d6dc);
-  background-attachment: fixed;
-  background-size: cover;
+  @apply bg-pastel text-gray-800;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+.animate-shake {
+  animation: shake 0.5s;
+}
+
+.react-pageflip .page-cover.page-cover-left {
+  display: none !important;
 }

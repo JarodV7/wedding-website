@@ -1,10 +1,16 @@
 module.exports = {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
-  },
-  resolve: {
-        extensions: ['.ts', '.tsx'],
+    extend: {
+      fontFamily: {
+        playfair: ['Playfair Display', 'serif'],
+      },
+      colors: {
+        primary: '#6a8a4a',
+        pastel: '#fff8f4',
+        sage: '#dce7d6', // 🌿 Matches RSVP
+      },
+    },
   },
   plugins: [],
 };

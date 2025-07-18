@@ -1,42 +1,35 @@
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { HTMLMotionProps } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import { Heart, BookOpen, MapPin, Plane, Gift, HelpCircle } from 'lucide-react';
 
 const links = [
-  { to: '/about', icon: <Heart className="w-5 h-5 sm:w-6 sm:h-6" />, label: 'About Us' },
-  { to: '/party', icon: <BookOpen className="w-5 h-5 sm:w-6 sm:h-6" />, label: 'Wedding Party' },
-  { to: '/details', icon: <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />, label: 'Details' },
-  { to: '/travel', icon: <Plane className="w-5 h-5 sm:w-6 sm:h-6" />, label: 'Travel' },
-  { to: '/registry', icon: <Gift className="w-5 h-5 sm:w-6 sm:h-6" />, label: 'Registry' },
-  { to: '/faq', icon: <HelpCircle className="w-5 h-5 sm:w-6 sm:h-6" />, label: 'FAQs' },
+  { to: '/about', icon: <Heart />, label: 'About' },
+  { to: '/details', icon: <MapPin />, label: 'Details' },
+  { to: '/travel', icon: <Plane />, label: 'Travel' },
+  { to: '/party', icon: <BookOpen />, label: 'Party' },
+  { to: '/registry', icon: <Gift />, label: 'Registry' },
+  { to: '/faq', icon: <HelpCircle />, label: 'FAQs' },
 ];
 
-const Navbar = () => (
-  <nav className="w-full overflow-x-auto bg-white bg-opacity-80 shadow-md sticky top-0 z-50">
-    <div className="flex flex-nowrap justify-start sm:justify-center gap-4 sm:gap-6 px-4 py-3 min-w-max">
-      {links.map((link, i) => (
-        <Link
-          key={i}
-          to={link.to}
-          className="flex flex-col items-center text-xs sm:text-sm flex-shrink-0"
-        >
+export default function Navbar() {
+  const { pathname } = useLocation();
+
+  return (
+    <nav className="flex flex-wrap justify-center gap-4 py-4 bg-white bg-opacity-80 shadow-md sticky top-0 z-50">
+      {links.map(({ to, icon, label }) => (
+        <Link key={to} to={to} className="flex flex-col items-center text-xs">
           <motion.div
             {...({
               whileHover: { scale: 1.1 },
               whileTap: { scale: 0.95 },
-              className: "bg-[#e1ecdf] w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-1 shadow-sm"
+              className: `w-10 h-10 flex items-center justify-center rounded-full mb-1 ${pathname === to ? 'bg-primary text-white' : 'bg-[#e1ecdf]'}`,
             } as HTMLMotionProps<'div'>)}
           >
-            {link.icon}
+            {icon}
           </motion.div>
-          <span className="hover:text-[#6a8a4a] transition-colors text-center">
-            {link.label}
-          </span>
+          <span className="text-sm">{label}</span>
         </Link>
       ))}
-    </div>
-  </nav>
-);
-
-export default Navbar;
+    </nav>
+  );
+}

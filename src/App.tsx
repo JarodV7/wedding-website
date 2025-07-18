@@ -1,67 +1,60 @@
-import React, { useEffect, useState } from 'react';
-import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import RSVPPage from './pages/RSVPPage';
-import WeddingParty from './pages/WeddingParty';
-import Details from './pages/Details';
 import AboutUs from './pages/AboutUs';
+import Details from './pages/Details';
+import WeddingParty from './pages/WeddingParty';
 import Travel from './pages/Travel';
 import Registry from './pages/Registry';
 import FAQ from './pages/FAQ';
-import { Analytics } from "@vercel/analytics/react"
+import PageTransition from './components/PageTransition';
+import ConfettiWrapper from './components/ConfettiWrapper';
+import { RouteProvider } from './RouteContext';
 
 function App() {
-  //const [isRSVPed, setIsRSVPed] = useState(localStorage.getItem('rsvped') === 'true');
-  const [isRSVPed, setIsRSVPed] = useState(false);
+  const [isAuthenticated, setAuthenticated] = useState(false);
+  const [showPages, setShowPages] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   const handleRSVPSuccess = () => {
-    //localStorage.setItem('rsvped', 'true');
-    setIsRSVPed(true);
-    navigate('/about');
+    setAuthenticated(true);
+    setTimeout(() => setShowPages(true), 1800); // ⏱ wait for confetti (1.8s)
   };
 
   return (
-    <div className="relative bg-gradient-to-br from-[#dce7d6] via-[#fdf4c8] to-[#f7d6dc] min-h-screen font-serif text-[#2f3b2f]">
-      <Analytics />
-      <img src="/img/rose.svg" alt="rose" className="absolute top-4 right-4 w-40 opacity-10 pointer-events-none" />
-      <img src="/img/couple.svg" alt="couple" className="absolute bottom-4 left-4 w-40 opacity-10 pointer-events-none" />
-      {isRSVPed && <Navbar />}
-
+    <RouteProvider>
+    <div className="bg-pastel min-h-screen font-playfair overflow-x-hidden">
       <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          {!isRSVPed && <Route path="/" element={<RSVPPage onSuccess={handleRSVPSuccess} />} />}
-          {isRSVPed ? (
-            <>
-              <Route path="/about" element={<PageWrapper><AboutUs /></PageWrapper>} />
-              <Route path="/party" element={<PageWrapper><WeddingParty /></PageWrapper>} />
-              <Route path="/details" element={<PageWrapper><Details /></PageWrapper>} />
-              <Route path="/travel" element={<PageWrapper><Travel /></PageWrapper>} />
-              <Route path="/registry" element={<PageWrapper><Registry /></PageWrapper>} />
-              <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
-              <Route path="*" element={<Navigate to="/about" />} />
-            </>
-          ) : (
-            <Route path="*" element={<Navigate to="/" />} />
-          )}
-        </Routes>
+        {!isAuthenticated ? (
+          <RSVPPage key="rsvp" onSuccess={handleRSVPSuccess} />
+        ) : showPages ? (
+          <motion.div
+            key="main"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Navbar />
+            <AnimatePresence mode="wait">
+              <Routes location={location} key={location.pathname}>
+              <Route path="/details" element={<PageTransition><Details /></PageTransition>} />
+              <Route path="/about" element={<><ConfettiWrapper /><PageTransition><AboutUs /></PageTransition></>} />
+              <Route path="/party" element={<PageTransition><WeddingParty /></PageTransition>} />
+              <Route path="/travel" element={<PageTransition><Travel /></PageTransition>} />
+              <Route path="/registry" element={<PageTransition><Registry /></PageTransition>} />
+              <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
+              <Route path="*" element={<PageTransition><AboutUs /></PageTransition>} />
+              </Routes>
+            </AnimatePresence>
+          </motion.div>
+        ) : null}
       </AnimatePresence>
     </div>
+    </RouteProvider>
   );
 }
-
-const PageWrapper = ({ children }: { children: React.ReactNode }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 10 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -10 }}
-    transition={{ duration: 0.4 }}
-    style={{ padding: '1.5rem 2rem', backgroundColor: 'rgba(255,255,255,0.8)', borderRadius: '1rem', boxShadow: '0 5px 15px rgba(0,0,0,0.1)', maxWidth: '64rem', margin: '2rem auto 0 auto' }}
-  >
-    {children}
-  </motion.div>
-);
 
 export default App;
